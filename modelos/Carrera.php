@@ -11,7 +11,7 @@ class Carrera {
     private $ObjectConnection;
 
     public function __construct(){
-        $this->con= new ConexionMysql();
+        $this->ObjectConnection= new ConexionMysql();
     }
 
     public function set($atributo, $contenido){
@@ -24,20 +24,20 @@ class Carrera {
 
     public function getListaCarreras(){
         $sql = "SELECT * FROM carrera";
-        $resultado = $this->con->consultaRetorno($sql);
+        $resultado = $this->ObjectConnection->consultaRetorno($sql);
         return $resultado;
     }
 
     public function addNew(){		
         $sql = "INSERT INTO carrera (Nombre, Clave, CreatedBy) VALUES
             ('{$this->Nombre}', '{$this->Clave}','{$this->CreatedBy}')";
-        $this->con->consultaSimple($sql);
+        $this->ObjectConnection->consultaSimple($sql);
         return true;
     }
 
     public function getById(){
         $sql = "SELECT * FROM carrera WHERE CarreraId = '{$this->CarreraId}' LIMIT 1";
-        $resultado = $this->con->consultaRetorno($sql);
+        $resultado = $this->ObjectConnection->consultaRetorno($sql);
         $row = mysqli_fetch_assoc($resultado);
         $this->CarreraId = $row['CarreraId'];
         $this->Clave = $row['Clave'];

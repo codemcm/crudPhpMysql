@@ -9,7 +9,7 @@ class CarreraController{
 	}
 
     public function getListaCarreras() {
-        $resultado = $this->objCarrera->listar();
+        $resultado = $this->objCarrera->getListaCarreras();
         return $resultado;
     }
 
