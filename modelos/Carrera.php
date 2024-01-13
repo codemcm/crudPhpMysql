@@ -7,6 +7,7 @@ class Carrera {
     private $Clave;
     private $Active;
     private $CreatedBy;
+    private $Estatus;
 
     private $ObjectConnection;
 
@@ -49,7 +50,7 @@ class Carrera {
     public function updateCarrera(){
         $sql = "UPDATE carrera SET Nombre = '{$this->Nombre}', 
             Clave = '{$this->Clave}' Active = '{$this->Active}' WHERE CarreraId = '{$this->CarreraId}'";
-        $this->con->consultaSimple($sql);
+        $this->ObjectConnection->consultaSimple($sql);
         return true;
     }
 }
